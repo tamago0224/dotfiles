@@ -19,10 +19,13 @@ call dein#add('Townk/vim-autoclose')
 
 call dein#add('Yggdroot/indentLine')
 
+call dein#add('twitvim/twitvim')
 
 "Go plugin 
 call dein#add('fatih/vim-go')
 
+"colorscheme
+call dein#add('tomasr/molokai')
 call dein#add('nanotech/jellybeans.vim')
 
 call dein#end()
@@ -72,3 +75,6 @@ let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1 
+
+"configuration for twitvim
+let twitcim_enable_python = 1
