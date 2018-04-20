@@ -23,11 +23,15 @@ call dein#add('twitvim/twitvim')
 
 "Go plugin 
 call dein#add('fatih/vim-go')
+"Toml syntax
+call dein#add('cespare/vim-toml')
 
 "colorscheme
 call dein#add('tomasr/molokai')
 call dein#add('nanotech/jellybeans.vim')
 
+"Language Server
+call dein#add('natebosch/vim-lsc')
 call dein#end()
 
 filetype plugin indent on
@@ -78,3 +82,11 @@ let g:go_highlight_build_constraints = 1
 
 "configuration for twitvim
 let twitcim_enable_python = 1
+
+"vim-lsc configuration
+let g:lsc_server_commands = {
+    \ 'go': 'go-langserver -gocodecompletion -mode stdio',
+    \ 'python': 'pyls',
+    \}
+let g:lsc_auto_map = v:true
+
