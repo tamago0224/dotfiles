@@ -63,6 +63,8 @@ set nobackup        "バックアップファイルを作成しない
 set noswapfile      "スワップファイルを作成しない
 set clipboard+=unnamed "クリップボードの動作設定
 
+autocmd BufNewFile,BufRead *.{html,htm,vue*} set filetype=html
+
 "key mapping
 noremap <Right> <Nop>
 noremap <Left> <Nop>
