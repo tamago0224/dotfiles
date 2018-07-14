@@ -26,6 +26,10 @@ call dein#add('fatih/vim-go')
 "Toml syntax
 call dein#add('cespare/vim-toml')
 
+"markdown
+call dein#add('plasticboy/vim-markdown')
+call dein#add('kannokanno/previm')
+
 "colorscheme
 call dein#add('tomasr/molokai')
 call dein#add('nanotech/jellybeans.vim')
@@ -89,3 +93,9 @@ let g:lsc_server_commands = {
     \}
 let g:lsc_auto_map = v:true
 
+" markdown
+let g:previm_open_cmd='firefox'
+augroup PreVimSettings
+    autocmd!
+    autocmd BufNewFile, BufRead *.{md, mdwn, mkd, mkdn, mark*} set filetype=markdown
+augroup END
