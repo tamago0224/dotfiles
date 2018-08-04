@@ -16,6 +16,7 @@ call dein#add('Shougo/neosnippet-snippets')
 call dein#add('ujihisa/unite-colorscheme')
 
 call dein#add('Townk/vim-autoclose')
+call dein#add('luochen1990/rainbow')
 
 call dein#add('Yggdroot/indentLine')
 
@@ -36,6 +37,7 @@ call dein#add('nanotech/jellybeans.vim')
 
 "Language Server
 call dein#add('natebosch/vim-lsc')
+
 call dein#end()
 
 filetype plugin indent on
@@ -99,3 +101,7 @@ augroup PreVimSettings
     autocmd!
     autocmd BufNewFile, BufRead *.{md, mdwn, mkd, mkdn, mark*} set filetype=markdown
 augroup END
+
+"rainbow setting
+let g:rainbow_active = 1
+
