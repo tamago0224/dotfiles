@@ -97,6 +97,7 @@ let g:lsc_auto_map = v:true
 
 " markdown
 let g:previm_open_cmd='firefox'
+let g:vim_markdown_folding_disable  = 1
 augroup PreVimSettings
     autocmd!
     autocmd BufNewFile, BufRead *.{md, mdwn, mkd, mkdn, mark*} set filetype=markdown
