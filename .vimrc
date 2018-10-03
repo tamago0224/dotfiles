@@ -76,6 +76,7 @@ noremap <Right> <Nop>
 noremap <Left> <Nop>
 noremap <Up> <Nop>
 noremap <Down> <Nop>
+imap <Nul> <Nop>
 
 "configuration for vim-go
 let g:go_highlight_function = 1
@@ -94,6 +95,8 @@ let g:lsc_server_commands = {
     \ 'python': 'pyls',
     \}
 let g:lsc_auto_map = v:true
+
+autocmd User LSCShowPreview wincmd H | vertical resize 0
 
 " markdown
 let g:previm_open_cmd='firefox'
