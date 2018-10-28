@@ -105,6 +105,7 @@ nnoremap <slient><c-p> :PrevimOpen<CR>
 augroup PreVimSettings
     autocmd!
     autocmd BufNewFile, BufRead *.{md, mdwn, mkd, mkdn, mark*} set filetype=markdown
+    autocmd BufNewFile, BufRead *.{md, mdwn, mkd, mkdn, mark*} inoremap <C-CR> <Space><Space><CR>
 augroup END
 
 "rainbow setting
