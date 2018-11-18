@@ -19,6 +19,8 @@ call dein#add('Townk/vim-autoclose')
 call dein#add('luochen1990/rainbow')
 
 call dein#add('Yggdroot/indentLine')
+call dein#add('andymass/vim-matchup')
+call dein#add('machakann/vim-highlightedyank')
 
 call dein#add('twitvim/twitvim')
 
@@ -70,6 +72,7 @@ set noswapfile      "スワップファイルを作成しない
 set clipboard+=unnamed "クリップボードの動作設定
 
 autocmd BufNewFile,BufRead *.{html,htm,vue*} set filetype=html
+autocmd BufNewFile,BufRead *.{yaml,yml} set filetype=yaml
 
 "key mapping
 noremap <Right> <Nop>
@@ -105,9 +108,10 @@ nnoremap <slient><c-p> :PrevimOpen<CR>
 augroup PreVimSettings
     autocmd!
     autocmd BufNewFile, BufRead *.{md, mdwn, mkd, mkdn, mark*} set filetype=markdown
-    autocmd BufNewFile, BufRead *.{md, mdwn, mkd, mkdn, mark*} inoremap <C-CR> <Space><Space><CR>
 augroup END
+inoremap <C-CR> <Space><Space><CR>
 
 "rainbow setting
 let g:rainbow_active = 1
-
+"vim-matchup setting
+let g:loaded_matchit = 1
