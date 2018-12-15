@@ -7,7 +7,11 @@ set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 call dein#begin(expand('~/.vim/dein'))
 
 call dein#add('Shougo/dein.vim')
-call dein#add('Shougo/neocomplete.vim')
+call dein#add('Shougo/deoplete.nvim')
+if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+endif
 call dein#add('Shougo/vimproc.vim')
 call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/neosnippet')
@@ -80,6 +84,9 @@ noremap <Left> <Nop>
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 imap <Nul> <Nop>
+
+" configuration for deoplete
+let g:deoplete#enable_at_startup = 1
 
 "configuration for vim-go
 let g:go_highlight_function = 1
