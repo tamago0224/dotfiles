@@ -87,6 +87,9 @@ imap <Nul> <Nop>
 
 " configuration for deoplete
 let g:deoplete#enable_at_startup = 1
+" configuration for neosnippet
+let g:neosnippet#enable_snipmate_compatibility = 1
+let g:neosnippet#snippets_directory=' ~/.vim/dein/repos/github.com/Shougo/neosnippet-snippets/neosnippets,~/.vim/snippets'
 
 "configuration for vim-go
 let g:go_highlight_function = 1
