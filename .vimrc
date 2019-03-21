@@ -42,7 +42,8 @@ call dein#add('tomasr/molokai')
 call dein#add('nanotech/jellybeans.vim')
 
 "Language Server
-call dein#add('natebosch/vim-lsc')
+call dein#add('prabirshrestha/vim-lsp')
+call dein#add('prabirshrestha/async.vim')
 
 call dein#end()
 
@@ -56,7 +57,7 @@ syntax enable
 
 colorscheme jellybeans
 set tabstop=4       "タブ幅を4に設定する
-set number          "行番号の表示
+" set number          "行番号の表示
 set autoindent      "改行時に前のインデントを持続させる
 set title           "タイトルの表示
 set expandtab       "タブを空白文字に設定する
@@ -74,6 +75,14 @@ set confirm         "ファイル保存を確認するファイアログを表�
 set nobackup        "バックアップファイルを作成しない
 set noswapfile      "スワップファイルを作成しない
 set clipboard+=unnamed "クリップボードの動作設定
+" status line
+set statusline+=%r
+set statusline+=%h
+set statusline+=%w
+"set statusline+=%=
+set statusline+=[enc=%{$fileencoding}]
+set statusline+=[line=%l/%L]
+set laststatus=2
 
 autocmd BufNewFile,BufRead *.{html,htm,vue*} set filetype=html
 autocmd BufNewFile,BufRead *.{yaml,yml} set filetype=yaml
@@ -103,11 +112,18 @@ let g:go_highlight_build_constraints = 1
 let twitcim_enable_python = 1
 
 "vim-lsc configuration
-let g:lsc_server_commands = {
-    \ 'go': 'go-langserver -gocodecompletion -mode stdio',
-    \ 'python': 'pyls',
-    \}
-let g:lsc_auto_map = v:true
+" let g:lsc_server_commands = {
+"     \ 'go': 'go-langserver -gocodecompletion -mode stdio',
+"     \ 'python': 'pyls',
+"     \}
+" let g:lsc_auto_map = v:true
+if executable('pyls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'whitelist': ['python'],
+        \ })
+endif
 
 autocmd User LSCShowPreview wincmd H | vertical resize 0
 
