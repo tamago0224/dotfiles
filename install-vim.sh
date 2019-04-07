@@ -2,6 +2,15 @@
 
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
+# install dependecies
+sudo apt update
+sudo apt install -y libncurses5-dev python-dev \
+	python3-dev ruby-dev lua5.1 liblua5.1-dev libperl-dev
+
+if [ ! -d $HOME/src/vim ]; then
+    git clone https://github.com/vim/vim $HOME/src/vim
+fi
+
 cd $HOME/src/vim
 git pull;
 ./configure --with-features=huge \
@@ -17,5 +26,5 @@ git pull;
 --enable-fail-if-missing
 
 
-make && make install
+make && sudo make install
 
