@@ -7,3 +7,5 @@ git clone https://github.com/Shougo/dein.vim.git  ~/.vim/dein/repos/github.com/S
 
 cd $HOME
 ln -s $SCRIPT_DIR/.vimrc $HOME/.vimrc
+
+sudo apt install neovim
