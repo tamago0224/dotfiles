@@ -85,7 +85,7 @@ set statusline+=[line=%l/%L]
 set laststatus=2
 
 autocmd BufNewFile,BufRead *.{html,htm,vue*} set filetype=html
-autocmd BufNewFile,BufRead *.{yaml,yml} set filetype=yaml
+autocmd BufNewFile,BufRead *.{yaml,yml} set set shiftwidth=2 softtabstop=2 tabstop=2
 
 "key mapping
 noremap <Right> <Nop>
