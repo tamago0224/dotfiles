@@ -1,0 +1,21 @@
+[[plugins]]
+repo = "Shougo/dein.vim"
+
+[[plugins]]
+repo = "Shougo/deoplete.nvim"
+
+[[plugins]]
+repo = "Twonk/vim-autoclose"
+
+[[plugins]]
+repo = "luochen1990/rainbow"
+
+[[plugins]]
+repo = "Yggdroot/indentLine"
+
+[[plugins]]
+repo = "nanotech/jellybeans.vim"
+
+[[plugins]]
+repo = "tomasr/molokai"
+
