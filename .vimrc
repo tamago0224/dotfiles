@@ -83,6 +83,7 @@ set statusline+=%w
 set statusline+=[enc=%{$fileencoding}]
 set statusline+=[line=%l/%L]
 set laststatus=2
+set encoding=utf-8
 
 autocmd BufNewFile,BufRead *.{html,htm,vue*} set filetype=html
 autocmd BufNewFile,BufRead *.{yaml,yml} set set shiftwidth=2 softtabstop=2 tabstop=2

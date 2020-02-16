@@ -1,0 +1,8 @@
+[alias]
+    s = status
+    st = stash
+    logo = log --oneline
+    cdiff = diff --cached
+[user]
+	email = =
+	name = tamago0224
