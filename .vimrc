@@ -2,60 +2,30 @@ if &compatible
     set nocompatible
 endif
 
-set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
-
-call dein#begin(expand('~/.vim/dein'))
-
-call dein#add('Shougo/dein.vim')
-call dein#add('Shougo/deoplete.nvim')
-if !has('nvim')
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
+" deinの自動インストール
+let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
+let s:dein_dir = s:cache_home . '/dein'
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+if !isdirectory(s:dein_repo_dir)
+    call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
 endif
-call dein#add('Shougo/vimproc.vim')
-call dein#add('Shougo/unite.vim')
-call dein#add('Shougo/neosnippet')
-call dein#add('Shougo/neosnippet-snippets')
 
-call dein#add('ujihisa/unite-colorscheme')
+let &runtimepath = s:dein_repo_dir . "," . &runtimepath
+" プラグインの読み込み
+let s:toml_file = $HOME . '/.config/nvim/dein.toml'
+if dein#load_state(s:dein_dir)
+    call dein#begin(s:dein_dir)
+    call dein#load_toml(s:toml_file)
+    call dein#end()
+    call dein#save_state()
+endif
 
-call dein#add('Townk/vim-autoclose')
-call dein#add('luochen1990/rainbow')
-
-call dein#add('Yggdroot/indentLine')
-call dein#add('andymass/vim-matchup')
-call dein#add('machakann/vim-highlightedyank')
-
-call dein#add('twitvim/twitvim')
-
-"Go plugin 
-call dein#add('fatih/vim-go')
-"Toml syntax
-call dein#add('cespare/vim-toml')
-
-"markdown
-call dein#add('plasticboy/vim-markdown')
-call dein#add('kannokanno/previm')
-
-"colorscheme
-call dein#add('tomasr/molokai')
-call dein#add('nanotech/jellybeans.vim')
-
-"Language Server
-call dein#add('prabirshrestha/vim-lsp')
-call dein#add('prabirshrestha/async.vim')
-
-call dein#end()
-
-filetype plugin indent on
-
-if dein#check_install()
+if has('vim_starting') && dein#check_install()
     call dein#install()
 endif
 
 syntax enable
 
-colorscheme jellybeans
 set tabstop=4       "タブ幅を4に設定する
 " set number          "行番号の表示
 set autoindent      "改行時に前のインデントを持続させる
@@ -101,30 +71,8 @@ let g:deoplete#enable_at_startup = 1
 let g:neosnippet#enable_snipmate_compatibility = 1
 let g:neosnippet#snippets_directory=' ~/.vim/dein/repos/github.com/Shougo/neosnippet-snippets/neosnippets,~/.vim/snippets'
 
-"configuration for vim-go
-let g:go_highlight_function = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_types = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1 
-
 "configuration for twitvim
 let twitcim_enable_python = 1
-
-"vim-lsc configuration
-" let g:lsc_server_commands = {
-"     \ 'go': 'go-langserver -gocodecompletion -mode stdio',
-"     \ 'python': 'pyls',
-"     \}
-" let g:lsc_auto_map = v:true
-if executable('pyls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': {server_info->['pyls']},
-        \ 'whitelist': ['python'],
-        \ })
-endif
 
 autocmd User LSCShowPreview wincmd H | vertical resize 0
 
