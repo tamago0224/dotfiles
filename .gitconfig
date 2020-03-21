@@ -1,8 +1,15 @@
+[core]
+	quotepath = false
+	editor = vim
+
 [alias]
     s = status
-    st = stash
-    logo = log --oneline
-    cdiff = diff --cached
+	st = stash
+    sc = switch
+	ck = checkout
+	b = branch
+	logo = log --oneline
+	cdiff = diff --cached
 [user]
-	email = =
 	name = tamago0224
+	email = bigtreesasuke200733@gmail.com
