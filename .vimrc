@@ -2,30 +2,26 @@ if &compatible
     set nocompatible
 endif
 
-" deinの自動インストール
-let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
-let s:dein_dir = s:cache_home . '/dein'
-let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-if !isdirectory(s:dein_repo_dir)
-    call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
-endif
+" Plug settings
+call plug#begin('~/.vim/plugged')
 
-let &runtimepath = s:dein_repo_dir . "," . &runtimepath
-" プラグインの読み込み
-let s:toml_file = $HOME . '/.config/nvim/dein.toml'
-if dein#load_state(s:dein_dir)
-    call dein#begin(s:dein_dir)
-    call dein#load_toml(s:toml_file)
-    call dein#end()
-    call dein#save_state()
-endif
+Plug 'Townk/vim-autoclose'
+Plug 'luochen1990/rainbow'
+Plug 'nanotech/jellybeans.vim'
+Plug 'tomasr/molokai'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'mattn/vim-goimports'
 
-if has('vim_starting') && dein#check_install()
-    call dein#install()
-endif
+call plug#end()
 
 syntax enable
 
+"colorscheme jellybeans
+colorscheme molokai
 set tabstop=4       "タブ幅を4に設定する
 " set number          "行番号の表示
 set autoindent      "改行時に前のインデントを持続させる
@@ -57,6 +53,7 @@ set encoding=utf-8
 
 autocmd BufNewFile,BufRead *.{html,htm,vue*} set filetype=html
 autocmd BufNewFile,BufRead *.{yaml,yml} set set shiftwidth=2 softtabstop=2 tabstop=2
+autocmd BufNewFile,BufRead *.md set set shiftwidth=2 softtabstop=2 tabstop=2
 
 "key mapping
 noremap <Right> <Nop>
@@ -90,3 +87,7 @@ inoremap <C-CR> <Space><Space><CR>
 let g:rainbow_active = 1
 "vim-matchup setting
 let g:loaded_matchit = 1
+
+" vim-lsp-settings setting
+let g:lsp_settings_servers_dir = "$HOME/.local/share/vim-lsp-settings/servers"
+
