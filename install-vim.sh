@@ -28,3 +28,6 @@ git pull;
 
 make && sudo make install
 
+# install vim-plug
+${SCRIPT_DIR}/install-vim-plug.sh
+
