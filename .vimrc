@@ -15,6 +15,7 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'mattn/vim-goimports'
+Plug 'jerrymarino/SwiftPlayground.vim'
 
 call plug#end()
 
@@ -89,5 +90,5 @@ let g:rainbow_active = 1
 let g:loaded_matchit = 1
 
 " vim-lsp-settings setting
-let g:lsp_settings_servers_dir = "$HOME/.local/share/vim-lsp-settings/servers"
+let g:lsp_settings_servers_dir = $HOME."/.local/share/vim-lsp-settings/servers"
 
