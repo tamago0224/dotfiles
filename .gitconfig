@@ -10,6 +10,7 @@
 	b = branch
 	logo = log --oneline
 	cdiff = diff --cached
+    tr = log --graph --decorate --color --oneline --all --pretty=format:\"%C(yellow)%h%Creset%C(cyan) %Creset[%cd] %C(bold)%d%Creset %C(cyan)(%cr)%Creset %C(green)%ce%Creset %s\" --date=format:'%Y/%m/%d %H:%M:%S'
 [user]
 	name = tamago0224
 	email = bigtreesasuke200733@gmail.com
