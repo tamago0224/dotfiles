@@ -15,7 +15,9 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'mattn/vim-goimports'
+Plug 'mattn/vim-sonictemplate'
 Plug 'jerrymarino/SwiftPlayground.vim'
+Plug 'Vimjas/vim-python-pep8-indent'
 
 call plug#end()
 
@@ -53,8 +55,8 @@ set laststatus=2
 set encoding=utf-8
 
 autocmd BufNewFile,BufRead *.{html,htm,vue*} set filetype=html
-autocmd BufNewFile,BufRead *.{yaml,yml} set set shiftwidth=2 softtabstop=2 tabstop=2
-autocmd BufNewFile,BufRead *.md set set shiftwidth=2 softtabstop=2 tabstop=2
+autocmd BufNewFile,BufRead *.{yaml,yml} set shiftwidth=2 softtabstop=2 tabstop=2
+autocmd BufNewFile,BufRead *.{md} set shiftwidth=2 softtabstop=2 tabstop=2
 
 "key mapping
 noremap <Right> <Nop>
@@ -91,4 +93,9 @@ let g:loaded_matchit = 1
 
 " vim-lsp-settings setting
 let g:lsp_settings_servers_dir = $HOME."/.local/share/vim-lsp-settings/servers"
+let g:lsp_diagnostics_echo_cursor = 1
+autocmd BufWritePre <buffer> LspDocumentFormatSync
 
+" vim-goimports
+" enable go-imports
+let g:goimports = 1
