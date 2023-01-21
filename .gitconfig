@@ -18,3 +18,5 @@
 	email = bigtreesasuke200733@gmail.com
 [credential]
 	helper = store
+[init]
+	defaultBranch = main

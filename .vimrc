@@ -5,19 +5,35 @@ endif
 " Plug settings
 call plug#begin('~/.vim/plugged')
 
+" utilities
 Plug 'Townk/vim-autoclose'
 Plug 'luochen1990/rainbow'
-Plug 'nanotech/jellybeans.vim'
-Plug 'tomasr/molokai'
+Plug 'vim-jp/vimdoc-ja'
+
+" vim-lsp and settings
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
+
+" explore 
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'lambdalisue/fern.vim'
+
+" color scheme
+Plug 'tomasr/molokai'
+Plug 'nanotech/jellybeans.vim'
+
+" golang
 Plug 'mattn/vim-goimports'
-Plug 'mattn/vim-sonictemplate'
-Plug 'jerrymarino/SwiftPlayground.vim'
+
+" python
 Plug 'Vimjas/vim-python-pep8-indent'
+
+" templates
+Plug 'mattn/vim-sonictemplate'
 
 call plug#end()
 
@@ -53,6 +69,9 @@ set statusline+=[enc=%{$fileencoding}]
 set statusline+=[line=%l/%L]
 set laststatus=2
 set encoding=utf-8
+set imdisable
+" leader key configuration
+let g:mapleader = "\<Space>"
 
 autocmd BufNewFile,BufRead *.{html,htm,vue*} set filetype=html
 autocmd BufNewFile,BufRead *.{yaml,yml} set shiftwidth=2 softtabstop=2 tabstop=2
@@ -94,8 +113,52 @@ let g:loaded_matchit = 1
 " vim-lsp-settings setting
 let g:lsp_settings_servers_dir = $HOME."/.local/share/vim-lsp-settings/servers"
 let g:lsp_diagnostics_echo_cursor = 1
-autocmd BufWritePre <buffer> LspDocumentFormatSync
 
 " vim-goimports
 " enable go-imports
 let g:goimports = 1
+
+" Fern
+" Show hidden files
+let g:fern#default_hidden=1
+nnoremap <C-n> :Fern . -reveal=% -drawer -toggle -width=40<CR>
+
+" vim-lsp
+" see: https://qiita.com/konokenj/items/f619f927f12b1bccfd47
+function! s:on_lsp_buffer_enabled() abort
+    if &ft =~ 'ctrlp\|dirvish'
+        return
+    endif
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    nmap <buffer> <leader>a <plug>(lsp-code-action)
+    nmap <buffer> <leader>l <plug>(lsp-code-lens)
+    nmap <buffer> <leader>L <plug>(lsp-document-diagnostics)
+    " nmap <buffer> <leader>d <plug>(lsp-decralation)
+    nmap <buffer> <leader>D <plug>(lsp-definition)
+    nmap <buffer> <leader>y <plug>(lsp-type-definition)
+    nmap <buffer> <leader>i <plug>(lsp-implementation)
+    nmap <buffer> <leader>r <plug>(lsp-references)
+    nmap <buffer> <leader>R <plug>(lsp-rename)
+    nmap <buffer> <leader>S <plug>(lsp-document-symbol)
+    nmap <silent><buffer> <C-j> <plug>(lsp-next-diagnostic)
+    nmap <silent><buffer> <C-k> <plug>(lsp-previous-diagnostic)
+
+    if &ft =~ 'typescript\|javascript'
+        nmap <buffer> <leader>f :LspDocumentFormatSync --server=efm-langserver<CR>
+        xmap <buffer> <leader>f :LspDocumentRangeFormatSync --server=efm-langserver<CR>
+    else
+        nmap <buffer> <leader>f <plug>(lsp-document-format)
+        xmap <buffer> <leader>f <plug>(lsp-document-range-format)
+    endif
+endfunction
+augroup lsp_install
+  au!
+  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+" vim-lsp デバッグログの出力
+command! LspDebug let lsp_log_verbose=1 | let lsp_log_file = expand('~/lsp.log')
+
+autocmd BufWritePre "*.ts,*.tsx,*.js,*.jsx" call execute('LspDocumentFormatSync')
+autocmd BufWritePre "*.go" call execute('LspDocumentFormatSync')
+autocmd BufWritePre "*.py" call execute('LspDocumentFormatSync')
