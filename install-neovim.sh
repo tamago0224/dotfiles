@@ -20,13 +20,11 @@ fi
 make CMAKE_BUILD_TYPE=Release
 sudo make install
 
-DEIN_HOME=$HOME/.cache/dein/repos/github.com/Shougo/dein.vim
-if [[ ! -d $HOME/.cache/dein ]]; then
-    mkdir -p "$DEIN_HOME"
-    git clone https://github.com/Shougo/dein.vim.git "$DEIN_HOME"
-fi
-
 cd $HOME
 if [[ ! -L $HOME/.config/nvim ]]; then
     ln -s $SCRIPT_DIR/.config/nvim $HOME/.config/nvim
 fi
+
+# install plugin manager
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
