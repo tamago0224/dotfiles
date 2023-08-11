@@ -77,17 +77,12 @@ _G.packer_plugins = {
   ["Comment.nvim"] = {
     loaded = true,
     path = "/home/tamago/.local/share/nvim/site/pack/packer/start/Comment.nvim",
-    url = "https://github.com/numTostr/Comment.nvim"
+    url = "https://github.com/numToStr/Comment.nvim"
   },
   LuaSnip = {
     loaded = true,
     path = "/home/tamago/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
-  },
-  ReplaceWithRegister = {
-    loaded = true,
-    path = "/home/tamago/.local/share/nvim/site/pack/packer/start/ReplaceWithRegister",
-    url = "https://github.com/vim-scripts/ReplaceWithRegister"
   },
   ["cmp-buffer"] = {
     loaded = true,
@@ -127,7 +122,7 @@ _G.packer_plugins = {
   ["lspsaga.nvim"] = {
     loaded = true,
     path = "/home/tamago/.local/share/nvim/site/pack/packer/start/lspsaga.nvim",
-    url = "https://github.com/nvimdev/lspsaga.nvim"
+    url = "https://github.com/glepnir/lspsaga.nvim"
   },
   ["lualine.nvim"] = {
     loaded = true,
@@ -180,8 +175,10 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
   ["nvim-ts-autotag"] = {
+    load_after = {},
     loaded = true,
-    path = "/home/tamago/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag",
+    needs_bufread = false,
+    path = "/home/tamago/.local/share/nvim/site/pack/packer/opt/nvim-ts-autotag",
     url = "https://github.com/windwp/nvim-ts-autotag"
   },
   ["nvim-web-devicons"] = {
@@ -214,24 +211,39 @@ _G.packer_plugins = {
     path = "/home/tamago/.local/share/nvim/site/pack/packer/start/typescript.nvim",
     url = "https://github.com/jose-elias-alvarez/typescript.nvim"
   },
+  ["vim-ReplaceWithRegister"] = {
+    loaded = true,
+    path = "/home/tamago/.local/share/nvim/site/pack/packer/start/vim-ReplaceWithRegister",
+    url = "https://github.com/inkarkat/vim-ReplaceWithRegister"
+  },
   ["vim-maximizer"] = {
     loaded = true,
     path = "/home/tamago/.local/share/nvim/site/pack/packer/start/vim-maximizer",
     url = "https://github.com/szw/vim-maximizer"
   },
-  ["vim-nightfly-colors"] = {
+  ["vim-nightfly-guicolors"] = {
     loaded = true,
-    path = "/home/tamago/.local/share/nvim/site/pack/packer/start/vim-nightfly-colors",
-    url = "https://github.com/bluz71/vim-nightfly-colors"
+    path = "/home/tamago/.local/share/nvim/site/pack/packer/start/vim-nightfly-guicolors",
+    url = "https://github.com/bluz71/vim-nightfly-guicolors"
   },
   ["vim-surround"] = {
     loaded = true,
     path = "/home/tamago/.local/share/nvim/site/pack/packer/start/vim-surround",
     url = "https://github.com/tpope/vim-surround"
+  },
+  ["vim-tmux-navigator"] = {
+    loaded = true,
+    path = "/home/tamago/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
+    url = "https://github.com/christoomey/vim-tmux-navigator"
   }
 }
 
 time([[Defining packer_plugins]], false)
+-- Load plugins in order defined by `after`
+time([[Sequenced loading]], true)
+vim.cmd [[ packadd nvim-treesitter ]]
+vim.cmd [[ packadd nvim-ts-autotag ]]
+time([[Sequenced loading]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
