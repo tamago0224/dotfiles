@@ -4,6 +4,11 @@ if not lspconfig_status then
   return
 end
 
+local util_setup, util = pcall(require, "lspconfig/util")
+if not util_setup then
+  return
+end
+
 -- import cmp-nvim-lsp plugin safely
 local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not cmp_nvim_lsp_status then
@@ -36,6 +41,7 @@ local on_attach = function(client, bufnr)
   keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
   keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
   keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on right hand side
+  keymap.set("n", "ff", ":lua vim.lsp.buf.format()<CR>", opts) -- formatting
 
   -- typescript specific keymaps (e.g. rename file and update imports)
   if client.name == "tsserver" then
@@ -108,4 +114,24 @@ lspconfig["lua_ls"].setup({
       },
     },
   },
+})
+
+lspconfig["gopls"].setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+  cmd = { "gopls", "serve", "-rpc.trace", "--debug=localhost:6060" },
+  filetypes = { "go", "gomod" },
+  roor_dir = util.root_pattern("go.work", "go.mod", ".git"),
+})
+-- goimports
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.go",
+  callback = function()
+    vim.lsp.buf.code_action({ context = { only = { "source.organizeImports" } }, apply = true })
+  end,
+})
+
+lspconfig["pylsp"].setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
 })
