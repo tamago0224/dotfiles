@@ -119,7 +119,7 @@ lspconfig["lua_ls"].setup({
 lspconfig["gopls"].setup({
   capabilities = capabilities,
   on_attach = on_attach,
-  cmd = { "gopls", "serve", "-rpc.trace", "--debug=localhost:6060" },
+  cmd = { "gopls", "serve" },
   filetypes = { "go", "gomod" },
   roor_dir = util.root_pattern("go.work", "go.mod", ".git"),
 })
@@ -132,6 +132,11 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 lspconfig["pylsp"].setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+-- rust
+lspconfig["rust_analyzer"].setup({
   capabilities = capabilities,
   on_attach = on_attach,
 })
