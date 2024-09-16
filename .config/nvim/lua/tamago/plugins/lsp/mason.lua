@@ -31,6 +31,7 @@ mason_lspconfig.setup({
     "gopls",
     "pylsp",
     "rust_analyzer",
+    "clangd",
   },
   -- auto-install configured servers (with lspconfig)
   automatic_installation = true, -- not the same as ensure_installed
