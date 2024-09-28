@@ -134,6 +134,15 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 lspconfig["pylsp"].setup({
   capabilities = capabilities,
   on_attach = on_attach,
+  settings = {
+    pylsp = {
+      plugins = {
+        rope_autoimport = {
+          enabled = true,
+        },
+      },
+    },
+  },
 })
 -- rust
 lspconfig["rust_analyzer"].setup({
