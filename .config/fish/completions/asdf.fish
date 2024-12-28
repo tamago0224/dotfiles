@@ -1,0 +1,1 @@
+/home/tamago/.asdf/completions/asdf.fish

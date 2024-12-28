@@ -1,0 +1,1 @@
+/home/tamago/.fzf/shell/key-bindings.fish
