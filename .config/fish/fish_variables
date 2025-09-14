@@ -11,8 +11,9 @@ SETUVAR _fish_abbr_g:git
 SETUVAR _fish_abbr_k:kubectl
 SETUVAR _fisher_decors_2F_fish_2D_ghq_files:/home/tamago/\x2econfig/fish/functions/__ghq_repository_search\x2efish\x1e/home/tamago/\x2econfig/fish/conf\x2ed/ghq_key_bindings\x2efish\x1e/home/tamago/\x2econfig/fish/completions/ghq\x2efish
 SETUVAR _fisher_laughedelic_2F_fish__logo_files:/home/tamago/\x2econfig/fish/functions/fish_logo\x2efish\x1e/home/tamago/\x2econfig/fish/completions/fish_logo\x2efish
-SETUVAR _fisher_plugins:laughedelic/fish_logo\x1edecors/fish\x2dghq\x1esentriz/fish\x2dpipenv\x1ereitzig/sdkman\x2dfor\x2dfish\x40v1\x2e4\x2e0
+SETUVAR _fisher_plugins:laughedelic/fish_logo\x1edecors/fish\x2dghq\x1esentriz/fish\x2dpipenv\x1ereitzig/sdkman\x2dfor\x2dfish\x40v1\x2e4\x2e0\x1ereitzig/sdkman\x2dfor\x2dfish\x40v2\x2e1\x2e0
 SETUVAR _fisher_reitzig_2F_sdkman_2D_for_2D_fish_40_v1_2E_34_2E_30__files:/home/tamago/\x2econfig/fish/functions/sdk\x2efish\x1e/home/tamago/\x2econfig/fish/conf\x2ed/sdk\x2efish\x1e/home/tamago/\x2econfig/fish/completions/sdk\x2efish
+SETUVAR _fisher_reitzig_2F_sdkman_2D_for_2D_fish_40_v2_2E_31_2E_30__files:/home/tamago/\x2econfig/fish/functions/sdk\x2efish\x1e/home/tamago/\x2econfig/fish/conf\x2ed/sdk\x2efish\x1e/home/tamago/\x2econfig/fish/completions/sdk\x2efish
 SETUVAR _fisher_sentriz_2F_fish_2D_pipenv_files:/home/tamago/\x2econfig/fish/conf\x2ed/pipenv\x2efish
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr
@@ -44,4 +45,4 @@ SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
-SETUVAR --export fish_user_paths:/home/tamago/sdk/go1\x2e23\x2e4/bin\x1e/home/tamago/\x2evolta/bin\x1e/home/tamago/\x2elocal/bin\x1e/home/tamago/\x2ecargo/bin\x1e/home/tamago/\x2edeno/bin\x1e/home/tamago/\x2easdf/bin\x1e/home/tamago/go/bin\x1e/home/tamago/\x2ebun\x1e/mnt/c/Program\x20Files/Oracle/VirtualBox/
+SETUVAR --export fish_user_paths:/home/tamago/\x2ebun/bin\x1e/opt/nvim/bin\x1e/home/tamago/\x2elocal/share/mise/installs/go/1\x2e23\x2e5/bin\x1e/home/tamago/sdk/go1\x2e23\x2e4/bin\x1e/home/tamago/\x2evolta/bin\x1e/home/tamago/\x2elocal/bin\x1e/home/tamago/\x2ecargo/bin\x1e/home/tamago/\x2edeno/bin\x1e/home/tamago/\x2easdf/bin\x1e/home/tamago/go/bin\x1e/home/tamago/\x2ebun\x1e/mnt/c/Program\x20Files/Oracle/VirtualBox/

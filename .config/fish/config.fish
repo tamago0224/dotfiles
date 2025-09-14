@@ -7,15 +7,16 @@ set -g DefaultIMModule fcitx
 set -g DENO_INSTALL $HOME/.deno
 
 set -g GOPATH $HOME/go
-set -g GOROOT (go1.23.4 env GOROOT)
+# set -g GOROOT (go1.23.4 env GOROOT)
 
 # path
 fish_add_path $HOME/go/bin
-fish_add_path $HOME/.asdf/bin
 fish_add_path $DENO_INSTALL/bin
 fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/.local/bin
 fish_add_path $GOROOT/bin
+fish_add_path /opt/nvim/bin
+fish_add_path /mnt/c/Users/bigtr/AppData/Local/Programs/Kiro/bin/kiro
 
 # theme
 set -g theme_display_git_master_branch yes
@@ -31,9 +32,6 @@ set -Ux VAGRANT_WSL_WINDOWS_ACCESS_USER_HOME_PATH /home/tamago
 set -Ux VAGRANT_WSL_WINDOWS_ACCESS_USER tamago
 set -Ux fish_user_paths $fish_user_paths /mnt/c/Program\ Files/Oracle/VirtualBox/
 
-# asdf
-source ~/.asdf/asdf.fish
-
 # abbr
 abbr --add k kubectl
 abbr --add d docker
@@ -41,7 +39,7 @@ abbr --add dc docker compose
 abbr --add g git
 
 # kubectl completion
-kubectl completion fish | source
+#kubectl completion fish | source
 
 # aliases
 alias vi=nvim
@@ -53,3 +51,10 @@ fish_add_path $VOLTA_HOME/bin
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 fish_add_path $BUN_INSTALL
+
+# mise
+/usr/bin/mise activate fish | source
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
